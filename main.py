@@ -9,7 +9,7 @@ WP_USERNAME = os.getenv("WP_USERNAME")
 WP_APP_PASSWORD = os.getenv("WP_APP_PASSWORD")
 POST_ID = 301023  # 🔧 Cập nhật đúng ID bài Marina Protocol
 TARGET_H2_TEXT = "Marina Protocol Today Quiz Answer for November 7, 2025"
-CHECK_ANSWER = "D) Both"
+CHECK_ANSWER = "D) Both A and C."
 
 # ================ SCRAPE SITE ================
 def scrape_quiz_site():
