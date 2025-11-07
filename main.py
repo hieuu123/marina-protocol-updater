@@ -7,9 +7,9 @@ from bs4 import BeautifulSoup
 WP_URL = "https://blog.mexc.com/wp-json/wp/v2/posts"
 WP_USERNAME = os.getenv("WP_USERNAME")
 WP_APP_PASSWORD = os.getenv("WP_APP_PASSWORD")
-POST_ID = 301023  # 🔧 Cập nhật đúng ID bài Marina Protocol
-TARGET_H2_TEXT = "Marina Protocol Today Quiz Answer for November 7, 2025"
-CHECK_ANSWER = "D) Both A and C."
+POST_ID = 301186  # 🔧 Cập nhật đúng ID bài Marina Protocol
+TARGET_H2_TEXT = "Marina Protocol Today Quiz Answer for November 8, 2025"
+CHECK_ANSWER = "A) Automated, trustless execution."
 
 # ================ SCRAPE SITE ================
 def scrape_quiz_site():
