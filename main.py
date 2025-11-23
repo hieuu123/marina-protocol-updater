@@ -9,7 +9,7 @@ WP_USERNAME = os.getenv("WP_USERNAME")
 WP_APP_PASSWORD = os.getenv("WP_APP_PASSWORD")
 POST_ID = 304394  # 🔧 Cập nhật đúng ID bài Marina Protocol
 TARGET_H2_TEXT = "Marina Protocol Today Quiz Answer (Updated)"
-CHECK_ANSWER = "B) Autonomous decision-making and task execution."
+CHECK_ANSWER = "B) Operates autonomously"
 
 # ================ SCRAPE SITE ================
 def scrape_quiz_site():
@@ -88,7 +88,7 @@ def update_post_after_h2(target_h2_text, question, answer):
     li_q = soup.new_tag("li")
     li_q["style"] = "font-size:17px"
     strong_q = soup.new_tag("strong")
-    strong_q.string = "The question for November 23, 2025:"
+    strong_q.string = "The question for November 24, 2025:"
     li_q.append(strong_q)
     li_q.append(f" {question}")
     ul_tag.append(li_q)
