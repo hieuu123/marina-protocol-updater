@@ -9,7 +9,7 @@ WP_USERNAME = os.getenv("WP_USERNAME")
 WP_APP_PASSWORD = os.getenv("WP_APP_PASSWORD")
 POST_ID = 304394  # 🔧 Marina Protocol
 TARGET_H2_TEXT = "Marina Protocol Today Quiz Answer for November 24, 2025"
-CHECK_ANSWER = "B) Operates autonomously"
+CHECK_ANSWER = "B) An agent that always achieves the best expected outcome."
 
 # Find & Replace ngày
 OLD_DATE = "November 24"
