@@ -8,12 +8,12 @@ WP_URL = "https://blog.mexc.com/wp-json/wp/v2/posts"
 WP_USERNAME = os.getenv("WP_USERNAME")
 WP_APP_PASSWORD = os.getenv("WP_APP_PASSWORD")
 POST_ID = 304394  # 🔧 Marina Protocol
-TARGET_H2_TEXT = "Marina Protocol Today Quiz Answer for December 7, 2025"
-CHECK_ANSWER = "B) Legal compliance and real-world linkage."
+TARGET_H2_TEXT = "Marina Protocol Today Quiz Answer for December 8, 2025"
+CHECK_ANSWER = "A) Immutability."
 
 # Find & Replace ngày
-OLD_DATE = "December 7"
-NEW_DATE = "December 8"
+OLD_DATE = "December 8"
+NEW_DATE = "December 9"
 
 
 # ================ SCRAPE SITE ================
