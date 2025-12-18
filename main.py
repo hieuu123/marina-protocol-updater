@@ -1,5 +1,6 @@
 import base64
 import os
+import html
 import requests
 from bs4 import BeautifulSoup
 
@@ -67,42 +68,50 @@ def update_post_after_h2(target_h2_text, question, answer):
     soup = BeautifulSoup(old_content, "html.parser")
 
     # 2️⃣ Tìm H2 đúng
-    h2_tag = soup.find("h2", string=lambda t: t and target_h2_text in t)
+    def normalize(text):
+        return (
+            html.unescape(text)
+            .lower()
+            .replace("’", "'")
+            .replace("–", "-")
+            .replace("—", "-")
+            .replace("\xa0", " ")
+            .strip()
+        )
+    h2_tag = None
+    for h2 in soup.find_all("h2"):
+        h2_norm = normalize(h2.get_text())
+        if "marina protocol today quiz answer" in h2_norm:
+            h2_tag = h2
+            break
+    
     if not h2_tag:
-        print("❌ Không tìm thấy H2 phù hợp")
-        print("Rendered snippet:", old_content[:400])
+        print("❌ Không tìm thấy H2 quiz")
+        print("Rendered snippet:", old_content[:4000])
         return
 
-    # 3️⃣ Xóa <ul> cũ (chứa question/answer)
-    next_tag = h2_tag.find_next_sibling()
+    # 3️⃣ Xóa UL quiz cũ (nếu có)
     removed = 0
-    if next_tag and next_tag.name == "ul":
-        next_tag.decompose()
+    ul = h2_tag.find_next_sibling("ul")
+    
+    if ul:
+        ul.decompose()
         removed += 1
-    print(f"[+] Removed {removed} <ul> cũ sau H2")
+    
+    print(f"[+] Removed {removed} quiz <ul>")
 
-    # 4️⃣ Tạo block <ul> mới
+    # 4️⃣ Tạo UL mới
     ul_tag = soup.new_tag("ul")
     ul_tag["class"] = "wp-block-list"
-
+    
     li_q = soup.new_tag("li")
-    li_q["style"] = "font-size:17px"
-    strong_q = soup.new_tag("strong")
-    strong_q.string = "Question:"
-    li_q.append(strong_q)
-    li_q.append(f" {question}")
+    li_q.append(soup.new_tag("strong"))
+    li_q.strong.string = f"Question: {question}"
     ul_tag.append(li_q)
-
+    
     li_a = soup.new_tag("li")
-    li_a["style"] = "font-size:17px"
-    strong_a_label = soup.new_tag("strong")
-    strong_a_label.string = "Correct Answer:"
-    li_a.append(strong_a_label)
-    li_a.append(" ")
-
-    strong_a = soup.new_tag("strong")
-    strong_a.string = answer
-    li_a.append(strong_a)
+    li_a.append(soup.new_tag("strong"))
+    li_a.strong.string = f"Correct Answer: {answer}"
     ul_tag.append(li_a)
 
     # 5️⃣ Chèn <ul> mới ngay sau H2
