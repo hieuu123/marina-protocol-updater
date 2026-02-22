@@ -8,9 +8,9 @@ from bs4 import BeautifulSoup
 WP_URL = "https://blog.mexc.com/wp-json/wp/v2/posts"
 WP_USERNAME = os.getenv("WP_USERNAME")
 WP_APP_PASSWORD = os.getenv("WP_APP_PASSWORD")
-POST_ID = 320536  # 🔧 Cập nhật đúng ID bài Marina Protocol
+POST_ID = 320561  # 🔧 Cập nhật đúng ID bài Marina Protocol
 TARGET_H2_TEXT = "Marina Protocol Today Quiz Answer for December 19, 2025"
-CHECK_ANSWER = "A) Decentralization."
+CHECK_ANSWER = "A) Decentralized governance."
 # ================ SCRAPE SITE ================
 def scrape_quiz_site():
     url = "https://miningcombo.com/marina-protocol"
